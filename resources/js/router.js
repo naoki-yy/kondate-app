@@ -1,18 +1,42 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Task from './components/Task.vue'
-import Show from './components/Show.vue'
+import TopDashboard from './components/TopDashboard.vue'
+import MakeMenu from './components/MakeMenu.vue'
+import GenerateMenu from './components/GenerateMenu.vue'
+import ShowMenu from './components/ShowMenu.vue'
+import ShowCooking from './components/ShowCooking.vue'
+import DetailDish from './components/DetailDish.vue'
 
 const routes = [
     {
-        path: '/tasks',
-        name: 'tasks',
-        component: Task
+        path: '/',
+        name: 'TopDashboard',
+        component: TopDashboard
     },
     {
-        path: '/tasks/:id',
-        name: 'show',
-        component: Show
-    }
+        path: '/make-menu',
+        name: 'MakeMenu',
+        component: MakeMenu
+    },
+    {
+        path: '/generate-menu',
+        name: 'GenerateMenu',
+        component: GenerateMenu
+    },
+    {
+        path: '/show-menu',
+        name: 'ShowMenu',
+        component: ShowMenu
+    },
+    {
+        path: '/show-cooking',
+        name: 'ShowCooking',
+        component: ShowCooking
+    },
+    {
+        path: '/menu/:dish',
+        name: 'DetailDish',
+        component: DetailDish
+    },
 ]
 
 const router = createRouter({

@@ -33,7 +33,7 @@ const routes = [
         component: ShowCooking
     },
     {
-        path: '/menu/:dish',
+        path: '/dish/:dish',
         name: 'DetailDish',
         component: DetailDish
     },

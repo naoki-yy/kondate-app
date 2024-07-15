@@ -31,17 +31,45 @@ class DishService
         $menu->save();
     }
 
-    // public function updateMenu(Menu $menu, array $data)
-    // {
-    //     $menu->fill($data);
-    //     $menu->last_used_date = now();
-    //     $menu->save();
+    /**
+     * 料理名から料理IDを取得
+     *
+     * @param string $name
+     * @return int|null
+     */
+    public function getDishIdByName(string $name): ?int
+    {
+        $dish = Dish::where('name', $name)->first();
+        return $dish ? $dish->id : null;
+    }
 
-    //     return $menu;
-    // }
+    /**
+     * 料理詳細情報を取得
+     *
+     * @param Dish $dish
+     * @return void
+     */
+    public function showDish(Dish $dish)
+    {
+        return $dish->load('materials');
+    }
 
-    // public function deleteMenu(Menu $menu)
-    // {
-    //     $menu->delete();
-    // }
+    public function updateDish(Dish $dish, array $data)
+    {
+        $dish->fill($data);
+        $dish->save();
+
+        return $dish;
+    }
+
+    /**
+     * 料理削除
+     *
+     * @param Dish $dish
+     * @return void
+     */
+    public function deleteDish(Dish $dish): void
+    {
+        $dish->delete();
+    }
 }

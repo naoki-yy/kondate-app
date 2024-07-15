@@ -19,7 +19,7 @@ class DishSeeder extends Seeder
         for ($i = 1; $i <= 20; $i++) {
             Dish::create([
                 'name' => $faker->randomElement(['麻婆豆腐', '寿司', '天ぷら', 'お好み焼き', '鍋', 'そば', '刺身', '焼肉', 'カレー', 'シチュー', '肉じゃが', 'うどん', 'ラーメン', 'ステーキ']),
-                'genre_id' => '1',
+                'genre_id' => mt_rand(1, 5),
                 'icon' => 'mdi-food-outline',
                 'reference_url' => $faker->url,
                 'description' => $faker->sentence,

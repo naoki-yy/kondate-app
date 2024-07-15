@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DishRequest;
+use App\Models\Dish;
 use App\Services\DishService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -40,29 +41,54 @@ class DishController extends Controller
         return response()->json();
     }
 
-    // /**
-    //  * 献立一覧ページ：献立更新処理
-    //  *
-    //  * @param MenuRequest $request
-    //  * @param Menu $menu
-    //  * @return JsonResponse
-    //  */
-    // public function update(MenuRequest $request, Menu $menu): JsonResponse
-    // {
-    //     $updatedMenu = $this->dishService->updateMenu($menu, $request->all());
-    //     return response()->json(['menu' => $updatedMenu], 200);
-    // }
+    /**
+     * 料理IDを取得
+     *
+     * @param string $name
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getDishIdByName($name): JsonResponse
+    {
+        $dishId = $this->dishService->getDishIdByName($name);
+        return response()->json(['id' => $dishId]);
+    }
 
-    // /**
-    //  * 献立一覧ページ：献立削除
-    //  *
-    //  * @param Menu $menu
-    //  * @return JsonResponse
-    //  */
-    // public function destroy(Menu $menu): JsonResponse
-    // {
-    //     $this->dishService->deleteMenu($menu);
-    //     return response()->json(200);
-    // }
+    /**
+     * 料理詳細情報の取得
+     *
+     * @param Dish $dish
+     * @return void
+     */
+    public function show(Dish $dish)
+    {
+        $dish_detail = $this->dishService->showDish($dish);
+        return response()->json($dish_detail);
+    }
 
+
+
+    /**
+     * 料理更新処理
+     *
+     * @param dishRequest $request
+     * @param dish $dish
+     * @return JsonResponse
+     */
+    public function update(dishRequest $request, Dish $dish): JsonResponse
+    {
+        $updatedDish = $this->dishService->updateDish($dish, $request->all());
+        return response()->json(['dish' => $updatedDish], 200);
+    }
+
+    /**
+     * 料理削除
+     *
+     * @param Dish $dish
+     * @return JsonResponse
+     */
+    public function destroy(Dish $dish): JsonResponse
+    {
+        $this->dishService->deleteDIsh($dish);
+        return response()->json(200);
+    }
 }

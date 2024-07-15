@@ -221,37 +221,37 @@ onMounted(() => {
                                 v-model="selected"
                             >
                                 <template v-slot:item.sunday="{ item }">
-                                    <a :href="`/menu/${item.sunday}`">{{
+                                    <a :href="`/dish/${item.sunday}`">{{
                                         item.sunday
                                     }}</a>
                                 </template>
                                 <template v-slot:item.monday="{ item }">
-                                    <a :href="`/menu/${item.monday}`">{{
+                                    <a :href="`/dish/${item.monday}`">{{
                                         item.monday
                                     }}</a>
                                 </template>
                                 <template v-slot:item.tuesday="{ item }">
-                                    <a :href="`/menu/${item.tuesday}`">{{
+                                    <a :href="`/dish/${item.tuesday}`">{{
                                         item.tuesday
                                     }}</a>
                                 </template>
                                 <template v-slot:item.wednesday="{ item }">
-                                    <a :href="`/menu/${item.wednesday}`">{{
+                                    <a :href="`/dish/${item.wednesday}`">{{
                                         item.wednesday
                                     }}</a>
                                 </template>
                                 <template v-slot:item.thursday="{ item }">
-                                    <a :href="`/menu/${item.thursday}`">{{
+                                    <a :href="`/dish/${item.thursday}`">{{
                                         item.thursday
                                     }}</a>
                                 </template>
                                 <template v-slot:item.friday="{ item }">
-                                    <a :href="`/menu/${item.friday}`">{{
+                                    <a :href="`/dish/${item.friday}`">{{
                                         item.friday
                                     }}</a>
                                 </template>
                                 <template v-slot:item.saturday="{ item }">
-                                    <a :href="`/menu/${item.saturday}`">{{
+                                    <a :href="`/dish/${item.saturday}`">{{
                                         item.saturday
                                     }}</a>
                                 </template>

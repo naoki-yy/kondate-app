@@ -1,7 +1,10 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 
+const route = useRoute();
+const router = useRouter();
 const search = ref("");
 const tab = ref("");
 const activeTab = ref(0);
@@ -32,7 +35,6 @@ const icon_item_data = [
     { text: "サンドイッチ", value: "mdi-sandwich" },
     { text: "寿司", value: "mdi-sushi" },
     { text: "ケーキ", value: "mdi-cake" },
-    { text: "ドーナツ", value: "mdi-donut" },
     { text: "コーヒー", value: "mdi-coffee" },
     { text: "ワイン", value: "mdi-glass-wine" },
     { text: "ジュース", value: "mdi-glass-cocktail" },
@@ -187,6 +189,10 @@ const fileteredDishes = computed(() => {
 onMounted(() => {
     fetchDishes();
     fetchGenres();
+    if (route.query.snackbarMessage) {
+        snackbarMessage.value = route.query.snackbarMessage;
+        snackbar.value = true;
+    }
 });
 </script>
 
@@ -277,7 +283,7 @@ onMounted(() => {
                                                 cols="3"
                                             >
                                                 <v-card
-                                                    :href="`/menu/${dish.name}`"
+                                                    :href="`/dish/${dish.name}`"
                                                     class="border d-flex align-center justify-center"
                                                     elevation="5"
                                                     min-height="150px"
